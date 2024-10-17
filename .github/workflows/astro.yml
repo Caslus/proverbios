@@ -20,6 +20,7 @@ concurrency:
 env:
   # BUILD_PATH: "." # default value when not using subfolders
   BUILD_PATH: web
+  PUBLIC_API_URL: ${{vars.PUBLIC_API_URL}}
 
 jobs:
   build:
