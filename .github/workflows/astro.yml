@@ -20,7 +20,6 @@ concurrency:
 env:
   # BUILD_PATH: "." # default value when not using subfolders
   BUILD_PATH: web
-  PUBLIC_API_URL: ${{vars.PUBLIC_API_URL}}
 
 jobs:
   build:
@@ -46,7 +45,9 @@ jobs:
         run: |
           cd ${{ env.BUILD_PATH }}
           bun astro build --site "${{ steps.pages.outputs.origin }}" --base "${{ steps.pages.outputs.base_path }}"
-
+        env:
+          PUBLIC_API_URL: ${{vars.PUBLIC_API_URL}}
+          
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
