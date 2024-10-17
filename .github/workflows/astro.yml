@@ -23,8 +23,10 @@ env:
 
 jobs:
   build:
+    environment:
+      name: github-pages
     env:
-      PUBLIC_API_URL: ${{ secrets.PUBLIC_API_URL }}
+      PUBLIC_API_URL: ${{ vars.PUBLIC_API_URL }}
     name: Build
     runs-on: ubuntu-latest
     steps:
