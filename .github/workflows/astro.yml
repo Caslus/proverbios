@@ -23,6 +23,8 @@ env:
 
 jobs:
   build:
+    env:
+      PUBLIC_API_URL: ${{vars.PUBLIC_API_URL}}
     name: Build
     runs-on: ubuntu-latest
     steps:
@@ -45,8 +47,6 @@ jobs:
         run: |
           cd ${{ env.BUILD_PATH }}
           bun astro build --site "${{ steps.pages.outputs.origin }}" --base "${{ steps.pages.outputs.base_path }}"
-        env:
-          PUBLIC_API_URL: ${{vars.PUBLIC_API_URL}}
           
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
