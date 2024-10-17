@@ -1,0 +1,54 @@
+---
+interface Props {
+	method: "GET" | "POST" | "PUT" | "DELETE";
+	route: string;
+}
+
+const { method, route } = Astro.props;
+---
+
+<container>
+	<group>
+		<method>{method}</method>
+		<route>{import.meta.env.PUBLIC_API_URL}{route}</route>
+	</group>
+</container>
+
+<style>
+	container {
+		width: 70%;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 1rem;
+		padding-bottom: 0.25rem;
+		border-bottom: 1px solid #ccc;
+
+		@media (max-width: 768px) {
+			
+		}
+	}
+
+	group {
+		display: flex;
+		flex-direction: row;
+		justify-content: start;
+		align-items: center;
+		gap: 0.5rem;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	method {
+		font-weight: bold;
+	}
+
+	route {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+</style>
